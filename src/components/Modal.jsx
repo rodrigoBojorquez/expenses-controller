@@ -60,6 +60,7 @@ function Modal({ setModal, animateModal, setAnimateModal, saveExpense }) {
           <input 
             id="quantity"
             type="number"
+            step="any"
             placeholder="Add the quantity of the expense"
             onChange={ e => setQuantity(+e.target.value) } 
           />

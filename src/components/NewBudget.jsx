@@ -27,6 +27,7 @@ function NewBudget({ budget, setBudget, setValidBudget }) {
           <input 
             id="budget-input"
             type="number" 
+            step="any"
             className="nuevo-presupuesto" 
             placeholder="0" 
             onChange={ (e)=> setBudget(+e.target.value) }  
