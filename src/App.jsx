@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Header from './components/Header'
 import Modal from './components/Modal';
+import { generateId } from './helpers';
 
 function App() {
 
@@ -9,12 +10,26 @@ function App() {
   const [modal, setModal] = useState(false);
   const [animateModal, setAnimateModal] = useState(false);
 
+  // this is the all expenses array
+  const [expenses, setExpenses] = useState([])
+
   const handleNewExpense = () => {
     setModal(true);
 
     setTimeout(() => {
       setAnimateModal(true);
     }, 200)
+  }
+
+  const saveExpense = (expense) => {
+    expense.id = generateId();
+    setExpenses([... expenses, expense]);
+
+    setAnimateModal(false);
+
+    setTimeout(() => {
+      setModal(false); 
+    }, 500)
   }
 
   return (
@@ -53,6 +68,7 @@ function App() {
         setModal = {setModal}
         setAnimateModal = {setAnimateModal}
         animateModal = {animateModal}
+        saveExpense = {saveExpense}
         />
       }
     </div>

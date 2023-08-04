@@ -2,7 +2,7 @@ import BtnClose from "../img/cerrar.svg";
 import { useState } from "react";
 import Message from "./Message";
 
-function Modal({ setModal, animateModal, setAnimateModal }) {
+function Modal({ setModal, animateModal, setAnimateModal, saveExpense }) {
 
   const [message, setMessage] = useState("");
   const [name, setName] = useState("");
@@ -29,6 +29,7 @@ function Modal({ setModal, animateModal, setAnimateModal }) {
         return
     }
     setMessage("");
+    saveExpense({ name, quantity, category })
   }
 
   return(
