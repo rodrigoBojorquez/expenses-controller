@@ -23,7 +23,7 @@ const iconDictionary = {
 
 const testing = ()=> console.log("funciona el swipe");
 
-function Expense({expense, setEditExpense}) {
+function Expense({expense, setEditExpense, deleteExpense}) {
 
 
   const leadingActions = () => (
@@ -36,7 +36,10 @@ function Expense({expense, setEditExpense}) {
 
   const trailingActions = () => (
     <TrailingActions>
-      <SwipeAction onClick={()=> console.log("delete")}>
+      <SwipeAction 
+      onClick={()=> deleteExpense(expense.id)}
+      destructive = {true}
+      >
         Delete
       </SwipeAction>
     </TrailingActions>

@@ -50,6 +50,13 @@ function App() {
       setModal(false); 
     }, 500)
 
+    setEditExpense({});
+
+  }
+
+  const deleteExpense = (id) => {
+    const updatedExpenses = expenses.filter( expense => expense.id !== id );
+    setExpenses(updatedExpenses);
   }
 
   return (
@@ -68,6 +75,7 @@ function App() {
             <ExpensesList
               expenses = {expenses}
               setEditExpense = {setEditExpense}
+              deleteExpense = {deleteExpense}
             />
           </main>
           <div className='nuevo-gasto'>
