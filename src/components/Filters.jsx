@@ -11,7 +11,7 @@ function Filters({ filter, setFilter }) {
             value={filter}
             onChange={e => setFilter(e.target.value)}    
         >
-            <option value="">-- Select one --</option>
+            <option value="">-- All categories --</option>
             <option value="save">Save</option>
             <option value="food">Food</option>
             <option value="home">Home</option>
