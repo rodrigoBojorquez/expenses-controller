@@ -18,7 +18,7 @@ function BudgetControl({ budget, expenses }) {
       const totalAvailable = budget - totalSpent;
 
       // calcular el porcentaje de la grafica
-      const newPercentage = ((totalAvailable * 100 / budget)).toFixed(2);
+      const newPercentage = ((totalAvailable * 100 / budget)).toFixed(0);
 
       setSpent(totalSpent);
       setAvailable(totalAvailable); 
