@@ -1,7 +1,7 @@
 import NewBudget from "./NewBudget";
 import BudgetControl from "./BudgetControl";
 
-function Header({ budget, setBudget, validBudget, setValidBudget }) {
+function Header({ budget, setBudget, validBudget, setValidBudget, expenses }) {
   return(
     <header>
       <h1>Expenses Controller</h1>
@@ -9,6 +9,7 @@ function Header({ budget, setBudget, validBudget, setValidBudget }) {
       { validBudget ? 
         <BudgetControl
         budget = {budget}
+        expenses = {expenses}
         />
         :
         <NewBudget

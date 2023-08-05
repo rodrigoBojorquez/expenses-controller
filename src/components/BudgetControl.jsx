@@ -1,4 +1,21 @@
-function BudgetControl({ budget }) {
+import { useState, useEffect } from "react";
+
+function BudgetControl({ budget, expenses }) {
+
+    const [available, setAvailable] = useState(0);
+    const [spent, setSpent] = useState(0);
+
+    useEffect(() => {
+      const totalSpent = expenses.reduce( (total, expense) => {
+        return total + expense.quantity
+      }, 0)
+
+      const totalAvailable = budget - totalSpent
+
+      setSpent(totalSpent);
+      setAvailable(totalAvailable); 
+    }, [expenses])
+    
 
     //   formatea el numero a moneda
     const formatQuantity = (quantity) => {
@@ -16,15 +33,15 @@ function BudgetControl({ budget }) {
 
             <div className="contenido-presupuesto">
                 <p>
-                    <span>Presupuesto: </span>{formatQuantity(budget)}
+                    <span>Budget: </span>{formatQuantity(budget)}
                 </p>
 
                 <p>
-                    <span>Disponible: </span>{formatQuantity(0)}
+                    <span>Available: </span>{formatQuantity(available)}
                 </p>
 
                 <p>
-                    <span>Gastado: </span>{formatQuantity(0)}
+                    <span>Spent: </span>{formatQuantity(spent)}
                 </p>
             </div>
         </div>

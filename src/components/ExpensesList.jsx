@@ -1,6 +1,6 @@
 import Expense from "./Expense";
 
-function ExpensesList({ expenses }) {
+function ExpensesList({ expenses, setEditExpense }) {
   return(
     <div className="listado-gastos contenedor">
       <h2>{expenses.length ? "Expenses" : "No expenses yet"}</h2>
@@ -9,6 +9,7 @@ function ExpensesList({ expenses }) {
         <Expense
           key ={ expense.id}
           expense = {expense}
+          setEditExpense = {setEditExpense}
         />
       ))}
     </div>

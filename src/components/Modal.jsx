@@ -1,13 +1,25 @@
 import BtnClose from "../img/cerrar.svg";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Message from "./Message";
 
-function Modal({ setModal, animateModal, setAnimateModal, saveExpense }) {
+function Modal({ setModal, animateModal, setAnimateModal, saveExpense, editExpense, setEditExpense}) {
 
   const [message, setMessage] = useState("");
   const [name, setName] = useState("");
   const [quantity, setQuantity] = useState(0);
   const [category, setCategory] = useState("");
+  const [date, setDate] = useState("");
+  const [id, setId] = useState("");
+
+  useEffect(() => {
+    if( Object.keys(editExpense).length > 0 ) {
+      setName(editExpense.name);
+      setQuantity(editExpense.quantity);
+      setCategory(editExpense.category);
+      setDate(editExpense.date);
+      setId(editExpense.id);
+    }
+  }, [])
 
   const hiddenModal = () => {
     setAnimateModal(false);
@@ -15,6 +27,8 @@ function Modal({ setModal, animateModal, setAnimateModal, saveExpense }) {
     setTimeout(() => {
       setModal(false); 
     }, 500)
+
+    setEditExpense({});
   }
     
   const handleSubmit = (e) => {
@@ -29,7 +43,7 @@ function Modal({ setModal, animateModal, setAnimateModal, saveExpense }) {
         return
     }
     setMessage("");
-    saveExpense({ name, quantity, category })
+    saveExpense({ name, quantity, category, date, id })
   }
 
   return(
@@ -40,7 +54,7 @@ function Modal({ setModal, animateModal, setAnimateModal, saveExpense }) {
 
       {/* asi pongo clases de forma condicional */}
       <form className={`formulario ${animateModal ? "animar" : "cerrar"}`} onSubmit={handleSubmit}>
-        <legend>New expense</legend>
+        <legend>{editExpense.name ? "Edit Expense" : "New expense"}</legend>
 
         { message && <Message type="error">{message}</Message> }
 
@@ -58,7 +72,8 @@ function Modal({ setModal, animateModal, setAnimateModal, saveExpense }) {
         <div className="campo">
           <label htmlFor="quantity">Quantity</label>
           <input 
-            id="quantity"
+            id="quantity"       
+            value={quantity === 0 ? "" : quantity}
             type="number"
             step="any"
             placeholder="Add the quantity of the expense"
@@ -86,7 +101,7 @@ function Modal({ setModal, animateModal, setAnimateModal, saveExpense }) {
 
         <input 
         type="submit"
-        value="Add expense"
+        value={editExpense.name ? "Save changes" : "Add expense"}
         />
       </form>
     </div>
