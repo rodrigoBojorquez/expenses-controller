@@ -352,6 +352,7 @@ main {
 }
 .modal .cerrar-modal {
     position: absolute;
+    z-index: 500;
     right: 3rem;
     top: 3rem;
     width: 3rem;
@@ -400,12 +401,14 @@ body .modal {
 /*** SWIPE LIST OVERRIDES **/
 .swipe-action__leading {
     background-color: var(--azul);
+    border-radius: 5px 0 0 5px;
     color: var(--blanco);
     margin-bottom: 2rem;
 }
 
 .swipe-action__trailing {
     background-color: #db2777;
+    border-radius: 0 5px 5px 0;
     margin-bottom: 2rem;
     color: var(--blanco);
 }
