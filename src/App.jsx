@@ -10,6 +10,7 @@ function App() {
   const [budget, setBudget] = useState(
     Number(localStorage.getItem("budget")) ?? 0
   );
+  const [spent, setSpent] = useState(0);
   const [validBudget, setValidBudget] = useState(false);
   const [modal, setModal] = useState(false);
   const [animateModal, setAnimateModal] = useState(false);
@@ -69,13 +70,30 @@ function App() {
     if(expense.id) {
       // update 
       const updatedExpenses = expenses.map( expenseState => expenseState.id === expense.id ? expense : expenseState );
-      setExpenses(updatedExpenses);
+      const totalSpent = updatedExpenses.reduce((accumulator, expense) => accumulator + expense.quantity, 0);
+
+      if (totalSpent > budget) {
+        const desicion = window.confirm("You are about to exceed your budget");
+
+        desicion && setExpenses(updatedExpenses);
+      }
+
+
     }
     else {
       // new
       expense.date = Date.now();
       expense.id = generateId();
-      setExpenses([... expenses, expense]);
+
+      const updatedExpenses = [... expenses, expense];
+      const totalSpent = updatedExpenses.reduce((accumulator, expense) => accumulator + expense.quantity, 0)
+
+      if (totalSpent > budget) {
+        const desicion = window.confirm("You are about to exceed your budget");
+
+        desicion && setExpenses([... expenses, expense]);
+      }
+
     }
 
     setAnimateModal(false);
@@ -96,7 +114,10 @@ function App() {
   return (
     <div className={modal ? "fijar" : undefined}>
       <Header
+      setSpent = {setSpent}
+      spent = {spent}
       expenses = {expenses}
+      setExpenses = {setExpenses}
       budget = {budget}
       setBudget = {setBudget}
       validBudget = {validBudget}
