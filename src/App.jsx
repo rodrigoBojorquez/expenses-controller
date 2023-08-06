@@ -77,7 +77,17 @@ function App() {
 
         desicion && setExpenses(updatedExpenses);
       }
+      else{
+        setExpenses(updatedExpenses);
+      }
 
+      setAnimateModal(false);
+
+      setTimeout(() => {
+        setModal(false); 
+      }, 500)
+  
+      setEditExpense({});
 
     }
     else {
@@ -93,16 +103,19 @@ function App() {
 
         desicion && setExpenses([... expenses, expense]);
       }
+      else {
+        setExpenses([... expenses, expense]);
+      }
+
+      setAnimateModal(false);
+
+      setTimeout(() => {
+        setModal(false); 
+      }, 500)
+  
+      setEditExpense({});
 
     }
-
-    setAnimateModal(false);
-
-    setTimeout(() => {
-      setModal(false); 
-    }, 500)
-
-    setEditExpense({});
 
   }
 
