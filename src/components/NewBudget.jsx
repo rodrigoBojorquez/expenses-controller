@@ -4,6 +4,7 @@ import { useState } from "react";
 function NewBudget({ budget, setBudget, setValidBudget }) {
 
   const [message, setMessage] = useState("");
+  const [placeholder, setPlaceholder] = useState(false);
 
   const handleBudget = (e) => {
     e.preventDefault();
@@ -12,10 +13,22 @@ function NewBudget({ budget, setBudget, setValidBudget }) {
       setMessage("Enter a valid budget");
       return
     }
+    else if(budget > 10000000000) {
+      setMessage("The budget is too large");
+      return
+    }
     
     setMessage("");
     setValidBudget(true);
 
+  }
+
+  const handleFocus = () => {
+    setPlaceholder(true);
+  }
+
+  const handleBlur = () => {
+    setPlaceholder(false);
   }
 
   return(
@@ -29,7 +42,9 @@ function NewBudget({ budget, setBudget, setValidBudget }) {
             type="number" 
             step="any"
             className="nuevo-presupuesto" 
-            placeholder="0" 
+            placeholder={placeholder ? "" : "0"}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
             onChange={ (e)=> setBudget(+e.target.value) }  
           />
         </div>

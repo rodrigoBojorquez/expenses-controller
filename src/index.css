@@ -433,3 +433,94 @@ footer h2 {
     text-align: center;
     width: auto;
 }
+
+/* Ajusta el tamaño de fuente en pantallas pequeñas */
+@media (max-width: 768px) {
+    body {
+        font-size: 1.4rem;
+    }
+
+    h1 {
+        font-size: 3rem;
+    }
+
+    h2 {
+        font-size: 2.6rem;
+    }
+
+    .formulario {
+        width: 100%;
+    }
+}
+
+/* Ajusta el tamaño de la leyenda del formulario en pantallas pequeñas */
+@media (max-width: 576px) {
+    .formulario legend {
+        font-size: 2.8rem;
+    }
+}
+
+/* Ajusta el ancho del formulario en pantallas medianas */
+@media (min-width: 576px) and (max-width: 991px) {
+    .formulario {
+        width: 70%;
+    }
+}
+
+/* Ajusta el tamaño de los botones de envío en pantallas medianas */
+@media (min-width: 576px) and (max-width: 768px) {
+    .formulario input[type="submit"] {
+        font-size: 1.8rem;
+    }
+}
+
+/* Ajusta el tamaño de los botones de envío en pantallas pequeñas */
+@media (max-width: 576px) {
+    .formulario input[type="submit"] {
+        font-size: 1.6rem;
+    }
+}
+
+/* Ajusta el tamaño de los presupuestos en pantallas pequeñas */
+@media (max-width: 576px) {
+    .formulario input[type="text"].nuevo-presupuesto,
+    .formulario input[type="number"].nuevo-presupuesto {
+        font-size: 2.2rem;
+    }
+}
+
+/* Ajusta el tamaño de los textos en la sección de presupuesto en pantallas medianas */
+@media (min-width: 768px) and (max-width: 991px) {
+    .contenido-presupuesto p {
+        font-size: 2rem;
+    }
+}
+
+/* Ajusta el tamaño de los textos en la lista de gastos en pantallas medianas */
+@media (min-width: 768px) and (max-width: 991px) {
+    .descripcion-gasto .nombre-gasto {
+        font-size: 2rem;
+    }
+
+    .descripcion-gasto .fecha-gasto {
+        font-size: 1.6rem;
+    }
+}
+
+/* Ajusta el tamaño de los textos en la lista de gastos en pantallas pequeñas */
+@media (max-width: 576px) {
+    .descripcion-gasto .nombre-gasto {
+        font-size: 1.8rem;
+    }
+
+    .descripcion-gasto .fecha-gasto {
+        font-size: 1.4rem;
+    }
+}
+
+/* Ajusta el ancho del formulario modal en pantallas pequeñas */
+@media (max-width: 576px) {
+    .modal .formulario {
+        width: 90%;
+    }
+}
