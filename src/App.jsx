@@ -3,6 +3,7 @@ import Header from './components/Header';
 import Filters from './components/Filters';
 import ExpensesList from './components/ExpensesList';
 import Modal from './components/Modal';
+import Footer from './components/Footer';
 import { generateId } from './helpers';
 
 function App() {
@@ -186,6 +187,8 @@ function App() {
         setEditExpense = {setEditExpense}
         />
       }
+
+      <Footer/>
     </div>
   )
 }
